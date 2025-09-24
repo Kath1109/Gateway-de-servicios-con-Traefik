@@ -38,3 +38,13 @@ En `/etc/hosts` se agregaron:
 
 Se encuentran en la carpeta evidencias
 
+## Análisis
+Traefik frente a mapear puertos directamente:
+Traefik permite centralizar el acceso a varios servicios sin necesidad de exponer y recordar diferentes puertos manualmente. Con Traefik se pueden usar dominios como api.localhost o ops.localhost y además ofrece balanceo de carga, certificados SSL y middlewares, cosas que no se tienen simplemente mapeando puertos en Docker.
+
+Middlewares que usaría en producción:
+Usaría autenticación básica o JWT para proteger servicios internos, rate limiting para evitar abuso de la API, circuit breakers y reintentos para mejorar la resiliencia, compresión para reducir el tamaño de las respuestas y redirección a HTTPS para mayor seguridad. Estos middlewares ayudan en seguridad, estabilidad y rendimiento.
+
+Riesgos del dashboard abierto y cómo mitigarlos:
+Si el dashboard queda abierto cualquier persona puede ver información sensible de los servicios y la configuración, lo que facilita ataques. Para evitarlo se recomienda proteger con autenticación, restringir el acceso por IP o VPN, y en producción deshabilitar el dashboard si no es necesario.
+
