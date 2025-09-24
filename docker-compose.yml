@@ -22,8 +22,7 @@ services:
       - "traefik.http.routers.traefik.entrypoints=web"
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.middlewares=ops-auth"
-      # Middleware BasicAuth para el dashboard (reemplaza REPLACE_WITH_HASH)
-      - "traefik.http.middlewares.ops-auth.basicauth.users=admin:REPLACE_WITH_HASH"
+      - "traefik.http.middlewares.ops-auth.basicauth.users=admin:$2y$05$Vl.s2.qL.JZuReS1FpLv6O.nrZbcUOJfQJiOUWBTxCrmQwwr60xDu"
 
   api:
     build: ./api
